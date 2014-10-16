@@ -1,0 +1,59 @@
+public class Alarm {
+2
+3     private int hour;
+4     private int minute;
+5  
+6     /* Constructor to initialize our alarm */
+7     public Alarm() {
+8        hour = 0;
+9        minute = 0;
+10    }
+11 
+12    /* Retrieve the hour */
+13    public int getHour() {
+14       return hour;
+15    }
+16
+17    /* Retrieve the minute */
+18    public int getMinute() {
+19       return minute;
+20    }
+21 
+22    /* Set the alarm time */
+23    public boolean setTime(int hr, int min) {
+24       if (hr > 23 || hr < 0 || min > 59 || min < 0) {
+25           return false;
+26       }
+27       else {
+28          hour = hr;
+29          minute = min;
+30          return true;
+31       }
+32    }
+33
+34    /* Display the time in String format */
+35    public String toString() {
+36       String tempMin;
+37
+38       // format special cases
+39       if (minute < 10) {
+40          tempMin = ":0" + minute;
+41       }
+42       else {
+43          tempMin = ":" + minute;
+44       }
+45
+46       if (hour == 0) {
+47          return "12" + tempMin + "AM";
+48       }
+49       else if (hour == 12) {
+50          return "12" + tempMin + "PM";
+51       }
+52       else if (hour > 12) {
+53          return (hour - 12) + tempMin + "PM";
+54       }
+55       else {
+56          return hour + tempMin + "AM";
+57       }
+58    }
+59 }
